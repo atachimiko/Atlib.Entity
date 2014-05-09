@@ -2,6 +2,7 @@
 using System.Reflection;
 using ImpromptuInterface;
 using Atlib.Attributes;
+using Atlib.Exceptions;
 
 namespace Atlib.Entity.Decorators
 {

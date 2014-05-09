@@ -72,6 +72,8 @@
   <ItemGroup>
     <Compile Include="Attributes\EntityInitializationAttribute.cs" />
     <Compile Include="Entity\IEntityMaster.cs" />
+    <Compile Include="Entity\IEntityNormalization.cs" />
+    <Compile Include="Entity\IEntityValidation.cs" />
     <Compile Include="Entity\Infrastructures\AuditableRepository.cs" />
     <Compile Include="Entity\Infrastructures\Repository.cs" />
     <Compile Include="Exceptions\EntityException.cs" />

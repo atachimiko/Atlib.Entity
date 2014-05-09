@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Atlib.Entity
 {
-	/// <summary>
-	///     マスターデータ
-	/// </summary>
-	public interface IEntityMaster
+	public interface IEntityValidation
 	{
-		DateTime ModifiedOn { get; set; }
+		bool Validation(IEntityData entity, params object[] args);
 	}
 }

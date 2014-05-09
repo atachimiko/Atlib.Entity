@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Atlib.Entity
 {
 	/// <summary>
-	///     マスターデータ
+	/// 
 	/// </summary>
-	public interface IEntityMaster
+	public interface IEntityNormalization
 	{
-		DateTime ModifiedOn { get; set; }
+		void Normalization(IEntityData entity, PropertyInfo property, object[] arguments);
 	}
 }
