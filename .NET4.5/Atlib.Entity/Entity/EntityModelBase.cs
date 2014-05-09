@@ -97,7 +97,7 @@ namespace Atlib.Entity
 				{
 					var @adp = new DbContextAdapter(ctx);
 					var @uow = new UnitOfWork(@adp);
-					var @repo = new AuditableRepository<T>(new Repository<T>(@adp));
+					var @repo = new AuditableRepository<T>(new EntityFramework.Patterns.Repository<T>(@adp));
 
 					// この呼び出しでは、新規の場合に外部参照のエンティティをctxコンテキストで再設定してください。
 					// でないと、外部参照しているエンティティが新規で登録されてしまいます。

@@ -12,17 +12,17 @@ using System.Threading.Tasks;
 
 namespace Atlib.Entity.Infrastructures
 {
-	public class BqRepository<T> where T : class, IEntityData
+	public class Repository<T> where T : class, IEntityData
 	{
-		static ILog LOG = LogManager.GetLogger(typeof(BqRepository<T>));
+		static ILog LOG = LogManager.GetLogger(typeof(Repository<T>));
 
-		public BqRepository(DbContext context)
+		public Repository(DbContext context)
 		{
 			this._Context = context;
 
 			var @adp = new DbContextAdapter(_Context);
 
-			var r = new Repository<T>(@adp);
+			var r = new EntityFramework.Patterns.Repository<T>(@adp);
 			this.Archivable  = new ArchivableRepository<T>(r);
 			this.Auditable = new AuditableRepository<T>(r);
 		}
