@@ -1,2 +1,2 @@
-Atlib.MVVM
+Atlib.Entity
 ==========
