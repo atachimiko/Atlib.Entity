@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
@@ -84,9 +85,15 @@ namespace Atlib.Entity.Decorators
 			}
 			catch (Exception expr)
 			{
-				throw new EntityException("保存に失敗しました。", expr);
+				 var innerEx = expr.InnerException;
+
+				 while (innerEx.InnerException != null)
+					 innerEx = innerEx.InnerException;
+
+				 throw new EntityException("保存に失敗しました。", innerEx);
 			}
 		}
+
 
 		EntityModelBase<T> _EntityViewModel;
 		T _Entity;
