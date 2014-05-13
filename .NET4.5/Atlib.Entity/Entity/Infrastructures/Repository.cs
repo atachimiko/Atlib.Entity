@@ -42,15 +42,16 @@ namespace Atlib.Entity.Infrastructures
 			}
 			catch (DbEntityValidationException expr)
 			{
+				StringBuilder sb = new StringBuilder();
 				foreach (var errors in expr.EntityValidationErrors)
 				{
 					foreach (var error in errors.ValidationErrors)
 					{
-						LOG.Error(error.ErrorMessage);    // log4netの出力に表示
+						sb.AppendLine(error.ErrorMessage);
 					}
 				}
 
-				throw new EntityException();
+				throw new EntityException(sb.ToString());
 			}
 		}
 
