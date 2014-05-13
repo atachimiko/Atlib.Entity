@@ -43,8 +43,11 @@ namespace Atlib.Entity
 			this._Context = context;
 			this.ModelInstance = entity;
 
-			// entityが非セッションでないと、複数のセッションに所属するエンティティになる場合があるため、例外がスローされる。
-			this._Context.Set<T>().Attach(entity);
+			if (entity.Id != 0L)
+			{
+				// entityが非セッションでないと、複数のセッションに所属するエンティティになる場合があるため、例外がスローされる。
+				this._Context.Set<T>().Attach(entity);
+			}
 
 			InConstractor(entity);
 		}
