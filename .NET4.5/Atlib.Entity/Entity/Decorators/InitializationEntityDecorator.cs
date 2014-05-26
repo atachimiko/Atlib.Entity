@@ -25,13 +25,17 @@ namespace Atlib.Entity.Decorators
 		{
 			base.Operation();
 
-			var clazz = _Entity.GetType();
+			// 初期化のみ呼び出す
+			if (_Entity.Id == 0L)
+			{
+				var clazz = _Entity.GetType();
 
-			var attribute = clazz.GetCustomAttribute<EntityInitializationAttribute>();
-			if (attribute == null) return; // EntityInitialization属性が無い場合はそのまま終了。
+				var attribute = clazz.GetCustomAttribute<EntityInitializationAttribute>();
+				if (attribute == null) return; // EntityInitialization属性が無い場合はそのまま終了。
 
-			var validator = Activator.CreateInstance(attribute.Initializer);
-			validator.ActLike<IEntityInitialization>().Initialization(this._Entity, this.Arguments);
+				var validator = Activator.CreateInstance(attribute.Initializer);
+				validator.ActLike<IEntityInitialization>().Initialization(this._Entity, this.Arguments);
+			}
 		}
 
 		readonly IEntityData _Entity;
