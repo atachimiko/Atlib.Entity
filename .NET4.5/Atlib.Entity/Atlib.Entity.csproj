@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="Attributes\EntityInitializationAttribute.cs" />
     <Compile Include="Entity\Decorators\InitializationEntityDecorator.cs" />
+    <Compile Include="Entity\Decorators\NormalizationEntityDecorator.cs" />
     <Compile Include="Entity\Decorators\PersistenceEntityDecorator.cs" />
     <Compile Include="Entity\IEntityInitialization.cs" />
     <Compile Include="Entity\IEntityMaster.cs" />
