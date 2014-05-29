@@ -14,6 +14,7 @@ using System.Data.Entity;
 using Atlib;
 using Atlib.Entity.Decorators;
 using Atlib.Entity.Infrastructures;
+using Atlib.Attributes;
 
 namespace Atlib.Entity
 {
@@ -184,7 +185,12 @@ namespace Atlib.Entity
 		/// </summary>
 		protected virtual void OnPreviewCommit(DbContext context)
 		{
+			var clazz = typeof(T);
+			var attribute = clazz.GetCustomAttribute<PreviewCommitTransactionAttribute>();
+			if (attribute == null) return; // EntityInitialization属性が無い場合はそのまま終了。
 
+			var transactioner = Activator.CreateInstance(attribute.PreviewCommitTransactionClazz);
+			transactioner.ActLike<IEntityPreivewCommit>().PreviewCommit(this.ModelInstance, this._Context);
 		}
 
 		protected virtual void OnPropertyChanged(string propertyName)

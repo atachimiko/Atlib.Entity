@@ -86,11 +86,16 @@ namespace Atlib.Entity.Decorators
 			catch (Exception expr)
 			{
 				 var innerEx = expr.InnerException;
-
-				 while (innerEx.InnerException != null)
-					 innerEx = innerEx.InnerException;
-
-				 throw new EntityException("保存に失敗しました。", innerEx);
+				 if (innerEx != null)
+				 {
+					 while (innerEx.InnerException != null)
+						 innerEx = innerEx.InnerException;
+					 throw new EntityException("保存に失敗しました。", innerEx);
+				 }
+				 else
+				 {
+					 throw new EntityException("保存に失敗しました。", expr);
+				 }
 			}
 		}
 

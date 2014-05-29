@@ -75,12 +75,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\EntityInitializationAttribute.cs" />
+    <Compile Include="Attributes\PreviewCommitTransactionAttribute.cs" />
     <Compile Include="Entity\Decorators\InitializationEntityDecorator.cs" />
     <Compile Include="Entity\Decorators\NormalizationEntityDecorator.cs" />
     <Compile Include="Entity\Decorators\PersistenceEntityDecorator.cs" />
     <Compile Include="Entity\IEntityInitialization.cs" />
     <Compile Include="Entity\IEntityMaster.cs" />
     <Compile Include="Entity\IEntityNormalization.cs" />
+    <Compile Include="Entity\IEntityPreivewCommit.cs" />
     <Compile Include="Entity\IEntityValidation.cs" />
     <Compile Include="Entity\Infrastructures\AuditableRepository.cs" />
     <Compile Include="Entity\Infrastructures\Repository.cs" />
